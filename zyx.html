@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+body{
+  background-color: black;
+}
+
+footer{
+    background-color: #black;
+    color:white;
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;
+    font-size:1em;
+  }
+
+  .message{
+    color:white;
+    padding-top:20%;
+  }
+</style>
+<title></title>
+</head>
+
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <div align="center" class="message">Wassup soozie</div>
+  <script>
+  	var val=0;
+  	var inc_dec,inc_dec_by=0.005;
+  	window.setInterval(function(){ 
+  		if(val>10){
+  			inc_dec=-inc_dec_by;
+  		}else if(val<1){
+  			inc_dec=inc_dec_by;
+  		}
+  		val=val+inc_dec;
+
+  		var randomColorChange = '#FFFFFF';
+    	$('.message').css('color', randomColorChange);
+  		
+  	}, 1);
+
+  	var sec_spent=0;
+  	window.setInterval(function(){ 
+  		$('title').html('XYZ.AI : '+(sec_spent++));
+  	}, 1000);
+  	window.setInterval(function(){ 
+  		$('.message').css('font-size',val+'em'); 
+
+		randomColorChange = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+  		$('.copyright').css('color', randomColorChange);
+  	}, 1);
+  </script>
+</body>
+
+<footer>
+  <div align="center" class="copyright">©2018 Advata LLC</div>
+</footer>
+
+</html>
