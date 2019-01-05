@@ -1,2 +1,1 @@
 "#zyx.ai"
-"# zyxai" 
