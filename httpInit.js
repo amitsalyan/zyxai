@@ -1,6 +1,5 @@
 
 const http = require('http')
-const fs = require('fs')
 const requestProcessor = require('./requestProcessor.js')
 
 module.exports = (ip,port)=>{

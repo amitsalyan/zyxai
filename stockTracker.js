@@ -3,6 +3,7 @@ const fs = require('fs');//declaring file system module
 const amex = './companylist/amex.csv'
 const nasdaq = './companylist/nasdaq.csv'
 const nyse = './companylist/nyse.csv'
+const executeRate_ms ='222';
 
 
 var executeTrack =  function(processFailed){
@@ -36,16 +37,11 @@ function tracker(file_location){
 								execute(j,splitDbQt)
 							}
 						}
-						, 666);
+						, executeRate_ms);
 			}
 		execute(j,splitDbQt);
 			
 	});
-}
-
-function pseudo(s){
-
-	console.log('executing'+s)
 }
 
  function executeScrip(ticker){
@@ -88,7 +84,7 @@ function executeFailed(){
 								execute(j,splitDbQt)
 							}
 						}
-						, 3000);
+						, );
 			}
 		execute(j,splitDbQt);
 	});

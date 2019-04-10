@@ -19,7 +19,5 @@ module.exports = (link)=>{
     		rs.end(content, 'utf-8');
         }
 
-
-    
     });
 }

@@ -1,34 +1,25 @@
-//
-const fs = require('fs');//declaring file system module
+const fs = require('fs')//declaring file system module
 const sortMap = require('sort-map')
-const util = require('util');
-const readFile = util.promisify(fs.readFile);
+const util = require('util')
+const readFile = util.promisify(fs.readFile)
 const jsonfile = require('jsonfile')
 const getDateYYYYMMDDFormat = require('./getDateYYYYMMDDFormat.js')
-const deleteFolderRecursive = require('./deleteFolderRecursive.js')
 
-var capitalMapFile='';
-var capitalGainLossMapFile='';
-var capitalToMarketCapFile='';
-var percGainLossFile='';
-var scrip52HighFile='';
-var scrip52LowFile='';
+let date = '20190220'//getDateYYYYMMDDFormat();
 
-let date = getDateYYYYMMDDFormat();
-date = '20181001'
+const capitalMapFile ='./data/'+date+'/capitalMap.json'
+const capitalGainLossMapFile ='./data/'+date+'/capitalGainLossMap.json'
+const capitalToMarketCapFile ='./data/'+date+'/capitalToMarketCapMap.json'
+const percGainLossFile ='./data/'+date+'/capitalPercGainLossFile.json'
+const scrip52LowFile ='./data/'+date+'/capital52LowFile.json'
+const scrip52HighFile ='./data/'+date+'/capital52HighFile.json'
 
 var capital =  function(){
+	console.log('processing dir: ./data/'+date)
 	getCapitalMap()
 }
 
 async function getCapitalMap(){
-
-capitalMapFile ='./data/'+date+'/capitalMap.json'
-capitalGainLossMapFile ='./data/'+date+'/capitalGainLossMap.json'
-capitalToMarketCapFile ='./data/'+date+'/capitalToMarketCapMap.json'
-percGainLossFile ='./data/'+date+'/capitalPercGainLossFile.json'
-scrip52LowFile ='./data/'+date+'/capital52LowFile.json'
-scrip52HighFile ='./data/'+date+'/capital52HighFile.json'
 
 var capitalMap = new Map();
 var capitalGainLossMap = new Map();
@@ -69,7 +60,6 @@ fs.readdir('./data/'+date+'/', function(err, filenames) {
 				}
 
 				if(content.high == content.high52 || content.high > content.high52 ){
-					console.log()
 					scrip52HighMap.set(content.high52,content.ticker)
 				}
 
@@ -79,7 +69,7 @@ fs.readdir('./data/'+date+'/', function(err, filenames) {
 
 
 			}).catch(err=>{
-				console.log('error read data: '+filename)
+				//console.log('error read data-->: '+filename)
 			})
     });
 	return [capitalMap,capitalGainLossMap,capitalToMarketCapMap,percGainLossMap,scrip52LowMap,scrip52HighMap]

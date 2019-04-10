@@ -1,4 +1,4 @@
-module.exports=function(){
+module.exports=function{
 	var x = new Date();
     var y = x.getFullYear().toString();
     var m = (x.getMonth() + 1).toString();
